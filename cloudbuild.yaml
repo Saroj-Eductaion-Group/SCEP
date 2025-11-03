@@ -25,3 +25,6 @@ steps:
 # This tells Cloud Build which images to store in Artifact Registry
 images:
   - 'gcr.io/gd-goenka-school/my-app-image:$COMMIT_SHA'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
