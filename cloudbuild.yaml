@@ -1,6 +1,7 @@
 steps:
-  # 1. Build the image automatically using Buildpacks (NO Dockerfile needed)
-  - name: 'gcr.io/k8s-artifacts-prod/gcp-builder/gcp-builder:v1'
+  # 1. Build the image automatically using Buildpacks
+  # THIS 'name:' IS NOW CORRECTED
+  - name: 'gcr.io/buildpacks/builder:v1'
     args:
       - 'build'
       - '--builder=google/default'
@@ -27,6 +28,6 @@ steps:
 images:
   - 'gcr.io/gd-goenka-school/my-app-image:$COMMIT_SHA'
 
-# This option fixes the logging error you had before
+# This option fixes the logging error
 options:
   logging: CLOUD_LOGGING_ONLY
