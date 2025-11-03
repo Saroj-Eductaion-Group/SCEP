@@ -1,0 +1,27 @@
+steps:
+  # 1. Build the container image
+  # This step builds your Dockerfile and tags the image with a unique ID
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/gd-goenka-school/my-app-image:$COMMIT_SHA', '.']
+
+  # 2. Push the image to Google Artifact Registry
+  # This pushes the newly built image to a private registry in your project
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/gd-goenka-school/my-app-image:$COMMIT_SHA']
+
+  # 3. Deploy to Cloud Run
+  # This command takes the image and deploys it as a new revision
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'my-app-service' # 1. CHOOSE A NAME for your Cloud Run service
+      - '--image=gcr.io/gd-goenka-school/my-app-image:$COMMIT_SHA'
+      - '--region=us-central1' # 2. CHANGE to your preferred region
+      - '--platform=managed'
+      - '--allow-unauthenticated' # 3. Makes your site public (remove if private)
+
+# This tells Cloud Build which images to store in Artifact Registry
+images:
+  - 'gcr.io/gd-goenka-school/my-app-image:$COMMIT_SHA'
