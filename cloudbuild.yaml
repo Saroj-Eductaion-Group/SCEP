@@ -1,30 +1,32 @@
 steps:
-  # 1. Build the container image
-  # This step builds your Dockerfile and tags the image with a unique ID
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/gd-goenka-school/my-app-image:$COMMIT_SHA', '.']
-
+  # 1. Build the image automatically using Buildpacks (NO Dockerfile needed)
+  - name: 'gcr.io/k8s-artifacts-prod/gcp-builder/gcp-builder:v1'
+    args:
+      - 'build'
+      - '--builder=google/default'
+      - '--image=gcr.io/gd-goenka-school/my-app-image:$COMMIT_SHA'
+      - '.' # Build the current directory
+    
   # 2. Push the image to Google Artifact Registry
-  # This pushes the newly built image to a private registry in your project
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/gd-goenka-school/my-app-image:$COMMIT_SHA']
 
   # 3. Deploy to Cloud Run
-  # This command takes the image and deploys it as a new revision
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
     args:
       - 'run'
       - 'deploy'
-      - 'my-app-service' # 1. CHOOSE A NAME for your Cloud Run service
+      - 'my-app-service' # This will be the name of your service
       - '--image=gcr.io/gd-goenka-school/my-app-image:$COMMIT_SHA'
-      - '--region=us-central1' # 2. CHANGE to your preferred region
+      - '--region=us-central1' # Make sure this region is correct
       - '--platform=managed'
-      - '--allow-unauthenticated' # 3. Makes your site public (remove if private)
+      - '--allow-unauthenticated'
 
-# This tells Cloud Build which images to store in Artifact Registry
+# This tells Cloud Build which images to store
 images:
   - 'gcr.io/gd-goenka-school/my-app-image:$COMMIT_SHA'
 
+# This option fixes the logging error you had before
 options:
   logging: CLOUD_LOGGING_ONLY
