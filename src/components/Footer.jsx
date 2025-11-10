@@ -4,10 +4,9 @@ import {
   MapPin,
   Phone,
   Mail,
-  Clock,
 } from "lucide-react"
-import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaYoutube } from "react-icons/fa"
 import { Link } from "react-router-dom"
+import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa"
 
 export default function Footer() {
   return (
@@ -31,19 +30,47 @@ export default function Footer() {
               Building the next generation of engineers and technologists.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <FaFacebook className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <FaTwitter className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
+              {/* Instagram */}
+              <a 
+                href="https://www.instagram.com/segindia/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-pink-500 transition-colors"
+                aria-label="Instagram"
+              >
                 <FaInstagram className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
+              
+              {/* LinkedIn */}
+              <a 
+                href="https://www.linkedin.com/company/saroj-educational-group/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-blue-400 transition-colors"
+                aria-label="LinkedIn"
+              >
                 <FaLinkedin className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
+              
+              {/* Facebook */}
+              <a 
+                href="https://www.facebook.com/SEGofficial" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-blue-600 transition-colors"
+                aria-label="Facebook"
+              >
+                <FaFacebook className="h-5 w-5" />
+              </a>
+              
+              {/* YouTube */}
+              <a 
+                href="https://www.youtube.com/@sarojeducationalgroup1018" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-red-500 transition-colors"
+                aria-label="YouTube"
+              >
                 <FaYoutube className="h-5 w-5" />
               </a>
             </div>
@@ -68,12 +95,8 @@ export default function Footer() {
                   Contact Us
                 </Link>
               </li>
-             
-              
             </ul>
           </div>
-
-      
 
           {/* Contact Information */}
           <div className="space-y-4">
@@ -101,10 +124,9 @@ Ahmamau, Uttar Pradesh 226021
                 <Mail className="h-5 w-5 text-blue-400 flex-shrink-0" />
                 <div>
                   <p className="text-gray-300 text-sm">admission.cell@seglko.org</p>
+                <p className="text-gray-300 text-sm">hr@seglko.org</p>
                 </div>
               </div>
-
-             
             </div>
           </div>
         </div>
@@ -127,7 +149,6 @@ Ahmamau, Uttar Pradesh 226021
                 <Link to="/terms-and-conditions" className="text-gray-400 hover:text-blue-400 text-sm transition-colors">
                   Terms and Conditions
                 </Link>
-                
               </div>
             </div>
           </div>
