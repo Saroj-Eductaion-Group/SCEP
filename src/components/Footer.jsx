@@ -116,7 +116,7 @@ Ahmamau, Uttar Pradesh 226021
           <div className="md:flex md:items-center md:justify-between">
             <div className="text-center md:text-left">
               <p className="text-gray-400 text-sm">
-                © 2024 Saroj College of Engineering & Polytechnic. All rights reserved.
+                © 2025 Saroj College of Engineering & Polytechnic. All rights reserved.
               </p>
             </div>
             <div className="mt-4 md:mt-0">
