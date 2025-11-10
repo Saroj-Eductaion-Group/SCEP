@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Award, FlaskConical, HeartPulse, Cpu, Database } from "lucide-react";
-import { Layout } from "../components/Layout"; // Layout import करें
+import { Layout } from "../components/Layout"; 
 
 export default function AwardWinningProjects() {
   const projects = [
@@ -44,7 +44,7 @@ export default function AwardWinningProjects() {
   ];
 
   return (
-    <Layout> {/* Layout component add करें */}
+    <Layout> 
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
