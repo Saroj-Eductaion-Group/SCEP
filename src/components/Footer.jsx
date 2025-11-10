@@ -68,12 +68,7 @@ export default function Footer() {
                   Contact Us
                 </Link>
               </li>
-            
-              <li>
-                <Link to="#campus-life" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">
-                  Campus Life
-                </Link>
-              </li>
+             
               
             </ul>
           </div>
